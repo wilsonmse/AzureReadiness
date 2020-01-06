@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "wilson"
+    },
+    "adminPassword": {
+      "value": "M0$tP0pu1@rPWD0v3rN3t"
+    },
+    "domainName": {
+      "value": "wse.lab"
+    },
+    "dnsPrefix": {
+      "value": "azrwsedc01"
+    }
+  }
+}

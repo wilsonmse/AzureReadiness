@@ -1,0 +1,44 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "bastionHosts_RG_AAA_vnet_bastion_name": {
+            "defaultValue": "RG_AAA-vnet-bastion",
+            "type": "String"
+        },
+        "publicIPAddresses_RG_AAA_vnet_ip_externalid": {
+            "defaultValue": "/subscriptions/540c8825-d068-4e5a-92ad-c23246ccad9e/resourceGroups/RG_AAA/providers/Microsoft.Network/publicIPAddresses/RG_AAA-vnet-ip",
+            "type": "String"
+        },
+        "virtualNetworks_RG_AAA_vnet_externalid": {
+            "defaultValue": "/subscriptions/540c8825-d068-4e5a-92ad-c23246ccad9e/resourceGroups/RG_AAA/providers/Microsoft.Network/virtualNetworks/RG_AAA-vnet",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/bastionHosts",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('bastionHosts_RG_AAA_vnet_bastion_name')]",
+            "location": "eastus",
+            "properties": {
+                "dnsName": "bst-199893d3-9251-40cd-a4d3-d398671c27e4.bastion.azure.com",
+                "ipConfigurations": [
+                    {
+                        "name": "IpConf",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_RG_AAA_vnet_ip_externalid')]"
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_RG_AAA_vnet_externalid'), '/subnets/AzureBastionSubnet')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "wilson"
+        },
+        "adminPassword": {
+            "value": "L!nk3dT3mp1@t3$"
+        },
+        "dnsLabelPrefix": {
+            "value": "linkedvm"
+        }
+    }
+}

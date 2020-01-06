@@ -1,0 +1,3 @@
+
+$resgroup='Myresourcegroup'
+$template=".\azuredeploy.json"
